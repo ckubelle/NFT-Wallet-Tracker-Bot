@@ -1,4 +1,3 @@
-from cgitb import reset
 import os
 import requests
 from dotenv import load_dotenv
