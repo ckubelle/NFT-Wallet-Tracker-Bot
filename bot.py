@@ -8,7 +8,7 @@ load_dotenv()
 
 cogs = [track]
 
-client = commands.Bot(command_prefix='/')
+client = commands.Bot(command_prefix='-')
 
 for i in range(len(cogs)):
     cogs[i].setup(client)
