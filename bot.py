@@ -4,15 +4,20 @@ import track
 from discord.ext import commands
 from dotenv import load_dotenv
 
-load_dotenv()
 
-cogs = [track]
+def runBot():
+    load_dotenv()
 
-client = commands.Bot(command_prefix='-')
+    cogs = [track]
 
-for i in range(len(cogs)):
-    cogs[i].setup(client)
+    client = commands.Bot(command_prefix='-')
+
+    for i in range(len(cogs)):
+        cogs[i].setup(client)
 
 
-DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
-client.run(DISCORD_TOKEN)
+    DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+    client.run(DISCORD_TOKEN)
+
+if __name__ == '__main__':
+    runBot()

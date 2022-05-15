@@ -30,7 +30,7 @@ class WalletTracker(commands.Cog):
     async def add(self, ctx, nickname, wallet = ""):
 
         if nickname in self.dict_wallets:
-            message = f"This nickname is already being tracked. Try using a different nickname to add this address"
+            message = "This nickname is already being tracked. Try using a different nickname to add this address"
             await ctx.send(message)
             return
 
@@ -68,7 +68,11 @@ class WalletTracker(commands.Cog):
             os_address = "0x7f268357a8c2552623316e2562d90e642bb538e5"
                           
             for transaction in transactions:
-                if transaction["to"] == os_address and int(transaction["timeStamp"]) > (curr_time - 150):
+
+                if int(transaction["timeStamp"]) < (curr_time - 150):
+                    break
+
+                if transaction["to"] == os_address:
                     channel = self.client.get_channel(CHANNEL_ID)
 
                     embed = discord.Embed(
